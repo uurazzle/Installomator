@@ -1,7 +1,6 @@
 texshop)
     name="TeXShop"
     type="zip"
-    downloadURL="$(downloadURLFromGit TeXShop TeXShop)"
-    appNewVersion="$(versionFromGit TeXShop TeXShop)"
+    downloadURL="https://pages.uoregon.edu/koch/texshop/texshop-64/texshop.zip"
     expectedTeamID="RBGCY5RJWM"
     ;;
