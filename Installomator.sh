@@ -951,7 +951,7 @@ mountDMG() {
     # always pipe 'Y\n' in case the dmg requires an agreement
     dmgmountOut=$(echo 'Y'$'\n' | hdiutil attach "$tmpDir/$archiveName" -nobrowse -readonly )
     dmgmountStatus=$(echo $?)
-    dmgmount=$(echo $dmgmountOut | tail -n 1 | cut -c 54- )
+    dmgmount=$(printf '%s\n' "$dmgmountOut" | awk '/^\/dev\// && NF >= 3 { $1=""; $2=""; sub(/^[ \t]+/, ""); mp=$0 } END { print mp }')
     deduplicatelogs "$dmgmountOut"
 
     if [[ $dmgmountStatus -ne 0 ]] ; then
